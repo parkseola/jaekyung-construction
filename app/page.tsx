@@ -39,7 +39,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 로딩화면 */}
+      {/* LOADING */}
       {loading && (
         <div
           className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505] transition-all duration-700 ${
@@ -49,21 +49,21 @@ export default function HomePage() {
           }`}
         >
 
-          <div className="flex items-center gap-3 md:gap-5">
+          <div className="flex items-center gap-2 md:gap-3">
 
             <img
               src="/jk-logo.png"
               alt="JK Logo"
-              className="w-24 h-24 md:w-32 md:h-32 object-contain brightness-[2.8] contrast-[1.4] drop-shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+              className="w-16 h-16 md:w-20 md:h-20 object-contain brightness-[2.8] contrast-[1.4] drop-shadow-[0_0_25px_rgba(255,255,255,0.25)]"
             />
 
             <div>
 
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-none">
+              <h1 className="text-3xl md:text-5xl font-bold text-white leading-none">
                 재경건설
               </h1>
 
-              <p className="text-xs md:text-sm tracking-[7px] text-gray-300 mt-4">
+              <p className="text-[10px] md:text-xs tracking-[6px] text-gray-300 mt-3">
                 JAEGYEONG CONSTRUCTION
               </p>
 
@@ -251,9 +251,7 @@ export default function HomePage() {
         </div>
 
         {/* HERO */}
-        <section
-          className="relative h-screen overflow-hidden"
-        >
+        <section className="relative h-screen overflow-hidden">
 
           <div className="absolute inset-0">
 
@@ -443,11 +441,6 @@ export default function HomePage() {
               <h3 className="text-3xl md:text-5xl font-bold leading-tight text-[#111]">
                 시공 문의
               </h3>
-
-              <p className="text-gray-600 mt-6 md:mt-8 text-base md:text-lg leading-8">
-                공사 관련 문의 내용을 남겨주시면
-                빠르게 확인 후 연락드리겠습니다.
-              </p>
 
             </div>
 
