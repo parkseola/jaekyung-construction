@@ -450,54 +450,90 @@ export default function HomePage() {
         </section>
 
         <footer className="bg-black text-gray-400 py-14 md:py-20 border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-5 md:px-8">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-              <div>
-                <div className="flex items-center gap-4">
-                  <img
-                    src="/jk-logo.png"
-                    alt="JK Logo"
-                    className="w-14 h-14 object-contain brightness-[2.2]"
-                  />
+  <div className="max-w-7xl mx-auto px-5 md:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+      <div>
+        <div className="flex items-center gap-4">
+          <img
+            src="/jk-logo.png"
+            alt="JK Logo"
+            className="w-14 h-14 object-contain brightness-[2.2]"
+          />
 
-                  <div className="h-14 flex flex-col justify-center">
-                    <h4 className="text-xl md:text-2xl font-bold text-white leading-none">
-                      재경건설
-                    </h4>
+          <div className="h-14 flex flex-col justify-center">
+            <h4 className="text-xl md:text-2xl font-bold text-white leading-none">
+              재경건설
+            </h4>
 
-                    <p className="text-[9px] md:text-[10px] text-gray-500 tracking-[3px] mt-2">
-                      JAEGYEONG CONSTRUCTION
-                    </p>
-                  </div>
-                </div>
-
-                <p className="leading-7 md:leading-8 text-sm md:text-base mt-8">
-                  도시가스 · 상하수도 · 부대토목 · 아스콘포장 전문기업
-                  <br />
-                  안전 · 품질 · 책임 시공을 약속드립니다.
-                </p>
-              </div>
-
-              <div className="text-sm md:text-base leading-8 text-gray-500">
-                법인명 : (주)재경건설
-                <br />
-                대표자 : 김재경
-                <br />
-                사업자등록번호 : 532-86-00592
-                <br />
-                대표번호 : 031-211-05514
-                <br />
-                휴대폰 : 010-2773-8020
-                <br />
-                주소 : 경기도 수원시 권선구 호매실로104번길 23-88 1층
-                <br />
-                <br />© 2021 JAEGYEONG CONSTRUCTION.
-                <br />
-                ALL RIGHTS RESERVED.
-              </div>
-            </div>
+            <p className="text-[9px] md:text-[10px] text-gray-500 tracking-[3px] mt-2">
+              JAEGYEONG CONSTRUCTION
+            </p>
           </div>
-        </footer>
+        </div>
+
+        <p className="leading-7 md:leading-8 text-sm md:text-base mt-8 text-gray-400">
+          도시가스 · 상하수도 · 부대토목 · 아스콘포장 전문기업
+          <br />
+          안전 · 품질 · 책임 시공을 약속드립니다.
+        </p>
+      </div>
+
+      <div>
+        <h5 className="text-white text-base md:text-lg font-bold mb-5">
+          회사 정보
+        </h5>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-sm md:text-base">
+          <div className="flex gap-4">
+            <span className="min-w-[95px] text-gray-500">법인명</span>
+            <span className="text-gray-300">(주)재경건설</span>
+          </div>
+
+          <div className="flex gap-4">
+            <span className="min-w-[95px] text-gray-500">대표자</span>
+            <span className="text-gray-300">김재경</span>
+          </div>
+
+          <div className="flex gap-4">
+            <span className="min-w-[95px] text-gray-500">사업자번호</span>
+            <span className="text-gray-300">532-86-00592</span>
+          </div>
+
+          <div className="flex gap-4">
+            <span className="min-w-[95px] text-gray-500">대표번호</span>
+            <a
+              href="tel:03121105514"
+              className="text-gray-300 hover:text-[#c8a46b] transition"
+            >
+              031-211-05514
+            </a>
+          </div>
+
+          <div className="flex gap-4">
+            <span className="min-w-[95px] text-gray-500">휴대폰</span>
+            <a
+              href="tel:01027738020"
+              className="text-gray-300 hover:text-[#c8a46b] transition"
+            >
+              010-2773-8020
+            </a>
+          </div>
+
+          <div className="flex gap-4 sm:col-span-2">
+            <span className="min-w-[95px] text-gray-500">주소</span>
+            <span className="text-gray-300">
+              경기도 수원시 권선구 호매실로104번길 23-88 1층
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="mt-12 pt-6 border-t border-white/10 text-xs md:text-sm text-gray-600">
+      © 2026 JAEGYEONG CONSTRUCTION. ALL RIGHTS RESERVED.
+    </div>
+  </div>
+</footer>
       </main>
     </>
   );
