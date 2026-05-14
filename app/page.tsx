@@ -530,7 +530,7 @@ export default function HomePage() {
     </div>
 
     <div className="mt-12 pt-6 border-t border-white/10 text-xs md:text-sm text-gray-600">
-      © 2026 JAEGYEONG CONSTRUCTION. ALL RIGHTS RESERVED.
+      © 2021 JAEGYEONG CONSTRUCTION. ALL RIGHTS RESERVED.
     </div>
   </div>
 </footer>
