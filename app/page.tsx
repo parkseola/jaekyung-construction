@@ -3,15 +3,22 @@
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
+  const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
-    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 
@@ -20,12 +27,23 @@ export default function HomePage() {
     };
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-black flex items-center justify-center z-[9999] transition-all duration-500">
+
+        <div className="flex flex-col items-center animate-pulse">
+
+          <img
+            src="/jk-logo.png"
+            alt="JK Logo"
+            className="w-28 md:w-36 object-contain"
+          />
+
+        </div>
+
+      </div>
+    );
+  }
 
   return (
     <main
@@ -36,68 +54,93 @@ export default function HomePage() {
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-black/50 backdrop-blur-md py-3"
+            ? "bg-black/40 backdrop-blur-md py-3"
             : "bg-gradient-to-b from-black/80 to-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
-          <a href="#top" className="cursor-pointer z-50">
-            <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide hover:text-[#c8a46b] transition">
-              재경건설
-            </h1>
+          {/* Logo */}
+          <a
+            href="#top"
+            className="flex items-center gap-3 cursor-pointer z-50"
+          >
+            <img
+              src="/jk-logo.png"
+              alt="JK Logo"
+              className="w-10 h-10 object-contain"
+            />
 
-            <p className="text-[10px] md:text-xs text-gray-300 mt-1 tracking-[2px] md:tracking-[3px]">
-              JAEGYEONG CONSTRUCTION
-            </p>
+            <div>
+              <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide hover:text-[#c8a46b] transition">
+                재경건설
+              </h1>
+
+              <p className="text-[10px] md:text-xs text-gray-300 mt-1 tracking-[2px] md:tracking-[3px]">
+                JAEGYEONG CONSTRUCTION
+              </p>
+            </div>
           </a>
 
+          {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 text-sm text-gray-200 font-medium">
-            <a href="#about" className="hover:text-[#c8a46b] transition">
+            <a
+              href="#about"
+              className="hover:text-[#c8a46b] transition"
+            >
               회사소개
             </a>
 
-            <a href="#business" className="hover:text-[#c8a46b] transition">
+            <a
+              href="#business"
+              className="hover:text-[#c8a46b] transition"
+            >
               사업분야
             </a>
 
-            <a href="#contact" className="hover:text-[#c8a46b] transition">
+            <a
+              href="#contact"
+              className="hover:text-[#c8a46b] transition"
+            >
               시공문의
             </a>
           </nav>
 
+          {/* Hamburger */}
           <button
-            type="button"
-            aria-label="메뉴 열기"
             onClick={() => setMenuOpen(true)}
             className="md:hidden flex flex-col gap-1 z-50"
           >
-            <span className="w-7 h-[2px] bg-white" />
-            <span className="w-7 h-[2px] bg-white" />
-            <span className="w-7 h-[2px] bg-white" />
+            <span className="w-7 h-[2px] bg-white"></span>
+            <span className="w-7 h-[2px] bg-white"></span>
+            <span className="w-7 h-[2px] bg-white"></span>
           </button>
         </div>
       </header>
 
-      {/* Mobile Dark Background */}
+      {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 ${
-          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
+          menuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible"
         }`}
         onClick={() => setMenuOpen(false)}
       />
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-[280px] bg-[#111] z-50 transition-transform duration-500 shadow-2xl ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 h-full w-[280px] bg-[#111] z-50 transition-transform duration-500 ${
+          menuOpen
+            ? "translate-x-0"
+            : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-white text-xl font-bold">MENU</h2>
+          <h2 className="text-white text-xl font-bold">
+            MENU
+          </h2>
 
           <button
-            type="button"
-            aria-label="메뉴 닫기"
             onClick={() => setMenuOpen(false)}
             className="text-white text-3xl"
           >
@@ -131,25 +174,13 @@ export default function HomePage() {
           </a>
 
           <a
-            href="tel:01027738020"
+            href="tel:01022738020"
             className="mt-8 bg-[#c8a46b] text-black text-center py-4 rounded-2xl font-bold"
           >
             전화문의
           </a>
         </div>
       </div>
-
-      {/* Top Button */}
-      {scrolled && (
-        <button
-          type="button"
-          aria-label="맨 위로 이동"
-          onClick={scrollToTop}
-          className="fixed right-5 bottom-5 md:right-8 md:bottom-8 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#111] text-white border border-white/20 shadow-2xl hover:bg-[#c8a46b] hover:text-black transition flex items-center justify-center text-xl font-bold"
-        >
-          ↑
-        </button>
-      )}
 
       {/* Hero */}
       <section className="relative h-screen overflow-hidden">
@@ -169,18 +200,16 @@ export default function HomePage() {
           </p>
 
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight">
-            믿고 맡길 수 있는
+            도시가스 · 상하수도
             <br />
-            책임 시공
+            전문 책임 시공
           </h2>
 
           <p className="text-gray-200 text-base md:text-xl mt-8 md:mt-10 leading-8 md:leading-10 max-w-3xl">
-            재경건설은 상,하수도 공사 및 토목 · 일반건설 분야에서 다년간의 현장
-            경험과 철저한 시공 관리로 안전하고 신뢰할 수 있는 공사를
-            수행합니다.
-            <br />
-            <br />
-            작은 공사부터 현장 관리까지 끝까지 책임지는 시공을 약속드립니다.
+            재경건설은 도시가스, 상·하수도,
+            부대토목, 아스콘 포장 분야의
+            풍부한 현장 경험을 기반으로
+            안전하고 신뢰할 수 있는 시공을 제공합니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-10 md:mt-14">
@@ -204,7 +233,7 @@ export default function HomePage() {
       {/* About */}
       <section
         id="about"
-        className="py-24 md:py-40 bg-white border-t border-gray-100"
+        className="py-24 md:py-40 bg-white"
       >
         <div className="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-14 md:gap-24 items-center">
           <div>
@@ -213,18 +242,19 @@ export default function HomePage() {
             </p>
 
             <h3 className="text-3xl md:text-5xl font-bold leading-tight mb-8 md:mb-10 text-[#111]">
-              현장을 이해하는
+              신뢰를 만드는
               <br />
-              건설회사
+              책임 시공
             </h3>
 
             <p className="text-gray-700 leading-8 md:leading-9 text-base md:text-lg">
-              재경건설은 상,하수도 배관 공사 및 유지보수, 토목 공사, 일반 건설
-              작업 등 다양한 현장을 직접 수행하고 있습니다.
-              <br />
-              <br />
-              보여주기식 공사가 아닌 기본과 안전을 우선으로 생각하며, 꼼꼼한
-              시공과 책임감 있는 관리로 고객의 신뢰를 쌓아가고 있습니다.
+              재경건설은 도시가스, 상·하수도,
+              부대토목 및 아스콘 포장 공사를
+              전문적으로 수행하고 있습니다.
+              <br /><br />
+              현장 중심의 정확한 시공과
+              철저한 안전 관리를 바탕으로
+              믿고 맡길 수 있는 결과를 제공합니다.
             </p>
           </div>
 
@@ -234,317 +264,91 @@ export default function HomePage() {
               alt="construction"
               className="rounded-[30px] md:rounded-[40px] shadow-2xl h-[400px] md:h-[650px] w-full object-cover"
             />
-
-            <div className="absolute -bottom-6 md:-bottom-10 left-5 md:-left-10 bg-[#111] text-white p-6 md:p-10 rounded-[20px] md:rounded-[30px] shadow-2xl">
-              <h4 className="text-3xl md:text-5xl font-bold text-[#c8a46b]">
-                SAFE
-              </h4>
-
-              <p className="mt-2 md:mt-3 text-sm md:text-base text-gray-300 leading-6 md:leading-7">
-                안전을 우선으로
-                <br />
-                책임 있게 시공합니다
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
-     {/* Business */}
-<section
-  id="business"
-  className="py-24 md:py-40 bg-[#111] text-white"
->
-  <div className="max-w-7xl mx-auto px-5 md:px-8">
-
-    <div className="text-center mb-16 md:mb-24">
-
-      <p className="text-[#c8a46b] tracking-[4px] font-semibold mb-5 text-sm">
-        BUSINESS AREA
-      </p>
-
-      <h3 className="text-3xl md:text-5xl font-bold leading-tight">
-        주요 시공 분야
-      </h3>
-
-      <p className="text-gray-400 mt-6 md:mt-8 text-base md:text-lg leading-8">
-        도시 기반 시설 공사부터 포장 공사까지
-        풍부한 현장 경험으로 책임 시공합니다.
-      </p>
-
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
-
-      {/* 도시가스 */}
-      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
-
-        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
-          01
-        </div>
-
-        <h4 className="text-2xl md:text-3xl font-bold mb-5">
-          도시가스 공사
-        </h4>
-
-        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
-          도시가스 배관 시공 및 유지보수 작업을
-          안전 기준에 맞춰 체계적으로 수행합니다.
-        </p>
-
-      </div>
-
-      {/* 상·하수도 */}
-      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
-
-        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
-          02
-        </div>
-
-        <h4 className="text-2xl md:text-3xl font-bold mb-5">
-          상·하수도 공사
-        </h4>
-
-        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
-          상수도 및 하수도 배관 공사를
-          정확하고 안전하게 시공합니다.
-        </p>
-
-      </div>
-
-      {/* 부대토목 */}
-      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
-
-        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
-          03
-        </div>
-
-        <h4 className="text-2xl md:text-3xl font-bold mb-5">
-          부대토목 공사
-        </h4>
-
-        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
-          기반 시설 조성 및 현장 여건에 맞춘
-          토목 공사를 책임감 있게 진행합니다.
-        </p>
-
-      </div>
-
-      {/* 아스콘 포장 */}
-      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
-
-        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
-          04
-        </div>
-
-        <h4 className="text-2xl md:text-3xl font-bold mb-5">
-          아스콘 포장
-        </h4>
-
-        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
-          도로 및 현장 아스콘 포장 공사를
-          견고하고 깔끔하게 시공합니다.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-      {/* Contact */}
-      <section id="contact" className="py-24 md:py-40 bg-[#f8f8f6]">
-        <div className="max-w-5xl mx-auto px-5 md:px-8">
+      {/* Business */}
+      <section
+        id="business"
+        className="py-24 md:py-40 bg-[#111] text-white"
+      >
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center mb-16 md:mb-24">
             <p className="text-[#c8a46b] tracking-[4px] font-semibold mb-5 text-sm">
-              CONTACT
+              BUSINESS AREA
             </p>
 
-            <h3 className="text-3xl md:text-5xl font-bold leading-tight text-[#111]">
-              시공 문의
+            <h3 className="text-3xl md:text-5xl font-bold leading-tight">
+              주요 시공 분야
             </h3>
           </div>
 
-          <div className="bg-white rounded-[30px] md:rounded-[40px] shadow-2xl p-6 md:p-14">
-            <form
-              action="https://formsubmit.co/joliecute@naver.com"
-              method="POST"
-              className="space-y-6 md:space-y-8"
-            >
-              <input type="hidden" name="_cc" value="ekstjrgus123@naver.com" />
-              <input type="hidden" name="_subject" value="재경건설 시공문의" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
 
-              <div>
-                <label className="block text-sm font-semibold mb-3 text-[#111]">
-                  이름(업체명) *
-                </label>
-
-                <input
-                  type="text"
-                  name="업체명"
-                  required
-                  placeholder="업체명 또는 성함"
-                  className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-4 outline-none focus:border-[#c8a46b]"
-                />
+            <div className="bg-white/5 border border-white/10 p-8 rounded-[30px]">
+              <div className="text-[#c8a46b] text-5xl font-bold mb-6">
+                01
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold mb-3 text-[#111]">
-                  휴대폰번호 *
-                </label>
+              <h4 className="text-3xl font-bold mb-5">
+                도시가스 공사
+              </h4>
 
-                <input
-                  type="tel"
-                  name="휴대폰번호"
-                  required
-                  placeholder="010-0000-0000"
-                  className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-4 outline-none focus:border-[#c8a46b]"
-                />
+              <p className="text-gray-300 leading-8">
+                도시가스 배관 시공 및
+                유지보수 작업을 안전하게 수행합니다.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-8 rounded-[30px]">
+              <div className="text-[#c8a46b] text-5xl font-bold mb-6">
+                02
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold mb-3 text-[#111]">
-                  이메일
-                </label>
+              <h4 className="text-3xl font-bold mb-5">
+                상·하수도 공사
+              </h4>
 
-                <input
-                  type="email"
-                  name="이메일"
-                  placeholder="example@email.com"
-                  className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-4 outline-none focus:border-[#c8a46b]"
-                />
+              <p className="text-gray-300 leading-8">
+                상수도 및 하수도 배관 공사를
+                정확하고 안전하게 시공합니다.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-8 rounded-[30px]">
+              <div className="text-[#c8a46b] text-5xl font-bold mb-6">
+                03
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold mb-3 text-[#111]">
-                  지역
-                </label>
+              <h4 className="text-3xl font-bold mb-5">
+                부대토목 공사
+              </h4>
 
-                <input
-                  type="text"
-                  name="지역"
-                  placeholder="예: 서울, 경기"
-                  className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-4 outline-none focus:border-[#c8a46b]"
-                />
+              <p className="text-gray-300 leading-8">
+                기반 시설 및 현장 토목 공사를
+                책임감 있게 진행합니다.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-8 rounded-[30px]">
+              <div className="text-[#c8a46b] text-5xl font-bold mb-6">
+                04
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold mb-3 text-[#111]">
-                  예상 견적
-                </label>
+              <h4 className="text-3xl font-bold mb-5">
+                아스콘 포장
+              </h4>
 
-                <input
-                  type="text"
-                  name="예상견적"
-                  placeholder="예상 견적 입력"
-                  className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-4 outline-none focus:border-[#c8a46b]"
-                />
-              </div>
+              <p className="text-gray-300 leading-8">
+                도로 및 현장 아스콘 포장을
+                깔끔하고 견고하게 시공합니다.
+              </p>
+            </div>
 
-              <div>
-                <label className="block text-sm font-semibold mb-5 text-[#111]">
-                  원하는 시공
-                </label>
-
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 md:gap-6 text-gray-700">
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="도시가스" />
-                    도시가스
-                  </label>
-
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="상,하수도" />
-                    상,하수도
-                  </label>
-
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="부대토목" />
-                    부대토목
-
-                  </label>
-                   <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="아스콘포장" />
-                    아스콘포장
-                  </label>
-
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="기타" />
-                    기타
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-3 text-[#111]">
-                  문의내용
-                </label>
-
-                <textarea
-                  rows={6}
-                  name="문의내용"
-                  placeholder="문의하실 내용을 입력해주세요"
-                  className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-4 outline-none focus:border-[#c8a46b] resize-none"
-                />
-              </div>
-
-              <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-4">
-                <button
-                  type="submit"
-                  className="w-full bg-[#111] hover:bg-[#c8a46b] hover:text-black text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300"
-                >
-                  문의하기
-                </button>
-
-                <a
-                  href="tel:01027738020"
-                  className="w-full border-2 border-[#111] text-[#111] hover:bg-[#111] hover:text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300 flex items-center justify-center"
-                >
-                  전화문의
-                </a>
-              </div>
-            </form>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-black text-gray-400 py-14 md:py-20">
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <h4 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            재경건설
-          </h4>
-
-          <p className="leading-7 md:leading-8 text-sm md:text-base">
-            상수도 · 토목 · 일반건설 전문기업
-            <br />
-            안전 · 품질 · 책임 시공을 약속드립니다.
-          </p>
-
-          <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm md:text-base leading-7">
-            <p>법인명: (주)재경건설</p>
-            <p>대표자: 김재경</p>
-            <p>사업자등록번호: 532-86-00592</p>
-            <p>
-              대표번호:{" "}
-              <a href="tel:03121105514" className="text-white hover:text-[#c8a46b]">
-                031-211-05514
-              </a>
-            </p>
-            <p>
-              휴대폰:{" "}
-              <a href="tel:01027738020" className="text-white hover:text-[#c8a46b]">
-                010-2773-8020
-              </a>
-            </p>
-            <p className="md:col-span-2">
-              주소: 경기도 수원시 권선구 호매실로 104번길 23-88 1층
-            </p>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
