@@ -20,11 +20,19 @@ export default function HomePage() {
     };
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <main
       id="top"
       className="min-h-screen bg-[#f5f5f3] text-gray-800 scroll-smooth"
     >
+      {/* Header */}
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
@@ -70,15 +78,17 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* Mobile Dark Background */}
       <div
-        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 ${
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setMenuOpen(false)}
       />
 
+      {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-[280px] bg-[#111] z-50 transition-transform duration-500 ${
+        className={`fixed top-0 right-0 h-full w-[280px] bg-[#111] z-50 transition-transform duration-500 shadow-2xl ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -129,6 +139,19 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Top Button */}
+      {scrolled && (
+        <button
+          type="button"
+          aria-label="맨 위로 이동"
+          onClick={scrollToTop}
+          className="fixed right-5 bottom-5 md:right-8 md:bottom-8 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#111] text-white border border-white/20 shadow-2xl hover:bg-[#c8a46b] hover:text-black transition flex items-center justify-center text-xl font-bold"
+        >
+          ↑
+        </button>
+      )}
+
+      {/* Hero */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -152,7 +175,7 @@ export default function HomePage() {
           </h2>
 
           <p className="text-gray-200 text-base md:text-xl mt-8 md:mt-10 leading-8 md:leading-10 max-w-3xl">
-            재경건설은 상수도 공사 및 토목 · 일반건설 분야에서 다년간의 현장
+            재경건설은 상,하수도 공사 및 토목 · 일반건설 분야에서 다년간의 현장
             경험과 철저한 시공 관리로 안전하고 신뢰할 수 있는 공사를
             수행합니다.
             <br />
@@ -178,6 +201,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* About */}
       <section
         id="about"
         className="py-24 md:py-40 bg-white border-t border-gray-100"
@@ -195,7 +219,7 @@ export default function HomePage() {
             </h3>
 
             <p className="text-gray-700 leading-8 md:leading-9 text-base md:text-lg">
-              재경건설은 상수도 배관 공사 및 유지보수, 토목 공사, 일반 건설
+              재경건설은 상,하수도 배관 공사 및 유지보수, 토목 공사, 일반 건설
               작업 등 다양한 현장을 직접 수행하고 있습니다.
               <br />
               <br />
@@ -226,55 +250,110 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="business" className="py-24 md:py-40 bg-[#111] text-white">
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <div className="text-center mb-16 md:mb-24">
-            <p className="text-[#c8a46b] tracking-[4px] font-semibold mb-5 text-sm">
-              BUSINESS AREA
-            </p>
+     {/* Business */}
+<section
+  id="business"
+  className="py-24 md:py-40 bg-[#111] text-white"
+>
+  <div className="max-w-7xl mx-auto px-5 md:px-8">
 
-            <h3 className="text-3xl md:text-5xl font-bold leading-tight">
-              전문 시공 분야
-            </h3>
-          </div>
+    <div className="text-center mb-16 md:mb-24">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                num: "01",
-                title: "상수도 공사",
-                desc: "상수도 배관 설치 및 유지보수 작업을 안전하게 수행합니다.",
-              },
-              {
-                num: "02",
-                title: "토목 공사",
-                desc: "다양한 현장 경험을 바탕으로 책임감 있는 시공을 진행합니다.",
-              },
-              {
-                num: "03",
-                title: "일반 건설",
-                desc: "꼼꼼한 현장 관리와 품질 중심 시공을 제공합니다.",
-              },
-            ].map((item) => (
-              <div
-                key={item.num}
-                className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px]"
-              >
-                <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
-                  {item.num}
-                </div>
+      <p className="text-[#c8a46b] tracking-[4px] font-semibold mb-5 text-sm">
+        BUSINESS AREA
+      </p>
 
-                <h4 className="text-2xl md:text-3xl font-bold mb-4">
-                  {item.title}
-                </h4>
+      <h3 className="text-3xl md:text-5xl font-bold leading-tight">
+        주요 시공 분야
+      </h3>
 
-                <p className="text-gray-300 leading-7">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+      <p className="text-gray-400 mt-6 md:mt-8 text-base md:text-lg leading-8">
+        도시 기반 시설 공사부터 포장 공사까지
+        풍부한 현장 경험으로 책임 시공합니다.
+      </p>
+
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
+
+      {/* 도시가스 */}
+      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
+
+        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
+          01
         </div>
-      </section>
 
+        <h4 className="text-2xl md:text-3xl font-bold mb-5">
+          도시가스 공사
+        </h4>
+
+        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
+          도시가스 배관 시공 및 유지보수 작업을
+          안전 기준에 맞춰 체계적으로 수행합니다.
+        </p>
+
+      </div>
+
+      {/* 상·하수도 */}
+      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
+
+        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
+          02
+        </div>
+
+        <h4 className="text-2xl md:text-3xl font-bold mb-5">
+          상·하수도 공사
+        </h4>
+
+        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
+          상수도 및 하수도 배관 공사를
+          정확하고 안전하게 시공합니다.
+        </p>
+
+      </div>
+
+      {/* 부대토목 */}
+      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
+
+        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
+          03
+        </div>
+
+        <h4 className="text-2xl md:text-3xl font-bold mb-5">
+          부대토목 공사
+        </h4>
+
+        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
+          기반 시설 조성 및 현장 여건에 맞춘
+          토목 공사를 책임감 있게 진행합니다.
+        </p>
+
+      </div>
+
+      {/* 아스콘 포장 */}
+      <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[25px] md:rounded-[30px] backdrop-blur-md hover:-translate-y-2 transition duration-300">
+
+        <div className="text-[#c8a46b] text-4xl md:text-5xl font-bold mb-6">
+          04
+        </div>
+
+        <h4 className="text-2xl md:text-3xl font-bold mb-5">
+          아스콘 포장
+        </h4>
+
+        <p className="text-gray-300 leading-7 md:leading-8 text-sm md:text-base">
+          도로 및 현장 아스콘 포장 공사를
+          견고하고 깔끔하게 시공합니다.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+      {/* Contact */}
       <section id="contact" className="py-24 md:py-40 bg-[#f8f8f6]">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="text-center mb-16 md:mb-24">
@@ -372,18 +451,23 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 md:gap-6 text-gray-700">
                   <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="상수도공사" />
-                    상수도공사
+                    <input type="radio" name="시공종류" value="도시가스" />
+                    도시가스
                   </label>
 
                   <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="토목" />
-                    토목
+                    <input type="radio" name="시공종류" value="상,하수도" />
+                    상,하수도
                   </label>
 
                   <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="일반건설" />
-                    일반건설
+                    <input type="radio" name="시공종류" value="부대토목" />
+                    부대토목
+
+                  </label>
+                   <label className="flex items-center gap-2">
+                    <input type="radio" name="시공종류" value="아스콘포장" />
+                    아스콘포장
                   </label>
 
                   <label className="flex items-center gap-2">
@@ -426,6 +510,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="bg-black text-gray-400 py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <h4 className="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -438,12 +523,26 @@ export default function HomePage() {
             안전 · 품질 · 책임 시공을 약속드립니다.
           </p>
 
-          <p className="mt-6 text-sm md:text-base">
-            문의전화:{" "}
-            <a href="tel:01027738020" className="text-white hover:text-[#c8a46b]">
-              010-2773-8020
-            </a>
-          </p>
+          <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm md:text-base leading-7">
+            <p>법인명: (주)재경건설</p>
+            <p>대표자: 김재경</p>
+            <p>사업자등록번호: 532-86-00592</p>
+            <p>
+              대표번호:{" "}
+              <a href="tel:03121105514" className="text-white hover:text-[#c8a46b]">
+                031-211-05514
+              </a>
+            </p>
+            <p>
+              휴대폰:{" "}
+              <a href="tel:01027738020" className="text-white hover:text-[#c8a46b]">
+                010-2773-8020
+              </a>
+            </p>
+            <p className="md:col-span-2">
+              주소: 경기도 수원시 권선구 호매실로 104번길 23-88 1층
+            </p>
+          </div>
         </div>
       </footer>
     </main>
