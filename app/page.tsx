@@ -11,6 +11,8 @@ export default function HomePage() {
       setScrolled(window.scrollY > 50);
     };
 
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -23,7 +25,6 @@ export default function HomePage() {
       id="top"
       className="min-h-screen bg-[#f5f5f3] text-gray-800 scroll-smooth"
     >
-      {/* Header */}
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
@@ -32,7 +33,6 @@ export default function HomePage() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
-          {/* Logo */}
           <a href="#top" className="cursor-pointer z-50">
             <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide hover:text-[#c8a46b] transition">
               재경건설
@@ -43,66 +43,51 @@ export default function HomePage() {
             </p>
           </a>
 
-          {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 text-sm text-gray-200 font-medium">
-            <a
-              href="#about"
-              className="hover:text-[#c8a46b] transition"
-            >
+            <a href="#about" className="hover:text-[#c8a46b] transition">
               회사소개
             </a>
 
-            <a
-              href="#business"
-              className="hover:text-[#c8a46b] transition"
-            >
+            <a href="#business" className="hover:text-[#c8a46b] transition">
               사업분야
             </a>
 
-            <a
-              href="#contact"
-              className="hover:text-[#c8a46b] transition"
-            >
+            <a href="#contact" className="hover:text-[#c8a46b] transition">
               시공문의
             </a>
           </nav>
 
-          {/* Hamburger */}
           <button
+            type="button"
+            aria-label="메뉴 열기"
             onClick={() => setMenuOpen(true)}
             className="md:hidden flex flex-col gap-1 z-50"
           >
-            <span className="w-7 h-[2px] bg-white"></span>
-            <span className="w-7 h-[2px] bg-white"></span>
-            <span className="w-7 h-[2px] bg-white"></span>
+            <span className="w-7 h-[2px] bg-white" />
+            <span className="w-7 h-[2px] bg-white" />
+            <span className="w-7 h-[2px] bg-white" />
           </button>
         </div>
       </header>
 
-      {/* Mobile Overlay */}
       <div
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
-          menuOpen
-            ? "opacity-100 visible"
-            : "opacity-0 invisible"
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* Mobile Menu */}
       <div
         className={`fixed top-0 right-0 h-full w-[280px] bg-[#111] z-50 transition-transform duration-500 ${
-          menuOpen
-            ? "translate-x-0"
-            : "translate-x-full"
+          menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-white text-xl font-bold">
-            MENU
-          </h2>
+          <h2 className="text-white text-xl font-bold">MENU</h2>
 
           <button
+            type="button"
+            aria-label="메뉴 닫기"
             onClick={() => setMenuOpen(false)}
             className="text-white text-3xl"
           >
@@ -136,7 +121,7 @@ export default function HomePage() {
           </a>
 
           <a
-            href="tel:01022738020"
+            href="tel:01027738020"
             className="mt-8 bg-[#c8a46b] text-black text-center py-4 rounded-2xl font-bold"
           >
             전화문의
@@ -144,7 +129,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Hero */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -168,12 +152,12 @@ export default function HomePage() {
           </h2>
 
           <p className="text-gray-200 text-base md:text-xl mt-8 md:mt-10 leading-8 md:leading-10 max-w-3xl">
-            재경건설은 상수도 공사 및 토목 · 일반건설 분야에서
-            다년간의 현장 경험과 철저한 시공 관리로
-            안전하고 신뢰할 수 있는 공사를 수행합니다.
-            <br /><br />
-            작은 공사부터 현장 관리까지
-            끝까지 책임지는 시공을 약속드립니다.
+            재경건설은 상수도 공사 및 토목 · 일반건설 분야에서 다년간의 현장
+            경험과 철저한 시공 관리로 안전하고 신뢰할 수 있는 공사를
+            수행합니다.
+            <br />
+            <br />
+            작은 공사부터 현장 관리까지 끝까지 책임지는 시공을 약속드립니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-10 md:mt-14">
@@ -194,7 +178,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About */}
       <section
         id="about"
         className="py-24 md:py-40 bg-white border-t border-gray-100"
@@ -212,14 +195,12 @@ export default function HomePage() {
             </h3>
 
             <p className="text-gray-700 leading-8 md:leading-9 text-base md:text-lg">
-              재경건설은 상수도 배관 공사 및 유지보수,
-              토목 공사, 일반 건설 작업 등
-              다양한 현장을 직접 수행하고 있습니다.
-              <br /><br />
-              보여주기식 공사가 아닌
-              기본과 안전을 우선으로 생각하며,
-              꼼꼼한 시공과 책임감 있는 관리로
-              고객의 신뢰를 쌓아가고 있습니다.
+              재경건설은 상수도 배관 공사 및 유지보수, 토목 공사, 일반 건설
+              작업 등 다양한 현장을 직접 수행하고 있습니다.
+              <br />
+              <br />
+              보여주기식 공사가 아닌 기본과 안전을 우선으로 생각하며, 꼼꼼한
+              시공과 책임감 있는 관리로 고객의 신뢰를 쌓아가고 있습니다.
             </p>
           </div>
 
@@ -245,11 +226,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Business */}
-      <section
-        id="business"
-        className="py-24 md:py-40 bg-[#111] text-white"
-      >
+      <section id="business" className="py-24 md:py-40 bg-[#111] text-white">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center mb-16 md:mb-24">
             <p className="text-[#c8a46b] tracking-[4px] font-semibold mb-5 text-sm">
@@ -291,20 +268,14 @@ export default function HomePage() {
                   {item.title}
                 </h4>
 
-                <p className="text-gray-300 leading-7">
-                  {item.desc}
-                </p>
+                <p className="text-gray-300 leading-7">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section
-        id="contact"
-        className="py-24 md:py-40 bg-[#f8f8f6]"
-      >
+      <section id="contact" className="py-24 md:py-40 bg-[#f8f8f6]">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="text-center mb-16 md:mb-24">
             <p className="text-[#c8a46b] tracking-[4px] font-semibold mb-5 text-sm">
@@ -322,24 +293,10 @@ export default function HomePage() {
               method="POST"
               className="space-y-6 md:space-y-8"
             >
-              {/* hidden */}
-              <input
-                type="hidden"
-                name="_subject"
-                value="재경건설 시공문의"
-              />
-
-              <input
-                type="hidden"
-                name="_captcha"
-                value="false"
-              />
-
-              <input
-                type="hidden"
-                name="_template"
-                value="table"
-              />
+              <input type="hidden" name="_cc" value="ekstjrgus123@naver.com" />
+              <input type="hidden" name="_subject" value="재경건설 시공문의" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
 
               <div>
                 <label className="block text-sm font-semibold mb-3 text-[#111]">
@@ -415,38 +372,22 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 md:gap-6 text-gray-700">
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="시공종류"
-                      value="상수도공사"
-                    />
+                    <input type="radio" name="시공종류" value="상수도공사" />
                     상수도공사
                   </label>
 
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="시공종류"
-                      value="토목"
-                    />
+                    <input type="radio" name="시공종류" value="토목" />
                     토목
                   </label>
 
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="시공종류"
-                      value="일반건설"
-                    />
+                    <input type="radio" name="시공종류" value="일반건설" />
                     일반건설
                   </label>
 
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="시공종류"
-                      value="기타"
-                    />
+                    <input type="radio" name="시공종류" value="기타" />
                     기타
                   </label>
                 </div>
@@ -465,7 +406,6 @@ export default function HomePage() {
                 />
               </div>
 
-              {/* Buttons */}
               <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-4">
                 <button
                   type="submit"
@@ -475,7 +415,7 @@ export default function HomePage() {
                 </button>
 
                 <a
-                  href="tel:01022738020"
+                  href="tel:01027738020"
                   className="w-full border-2 border-[#111] text-[#111] hover:bg-[#111] hover:text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300 flex items-center justify-center"
                 >
                   전화문의
@@ -486,7 +426,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-black text-gray-400 py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <h4 className="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -497,6 +436,13 @@ export default function HomePage() {
             상수도 · 토목 · 일반건설 전문기업
             <br />
             안전 · 품질 · 책임 시공을 약속드립니다.
+          </p>
+
+          <p className="mt-6 text-sm md:text-base">
+            문의전화:{" "}
+            <a href="tel:01027738020" className="text-white hover:text-[#c8a46b]">
+              010-2773-8020
+            </a>
           </p>
         </div>
       </footer>
