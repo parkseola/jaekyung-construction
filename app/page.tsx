@@ -7,14 +7,16 @@ export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  /* 로딩 */
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 600);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
 
+  /* 스크롤 */
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -27,16 +29,24 @@ export default function HomePage() {
     };
   }, []);
 
-  /* 로딩 화면 */
+  /* 로딩화면 */
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-black flex items-center justify-center z-[9999]">
+      <div className="fixed inset-0 bg-[#0a0a0a] flex items-center justify-center z-[9999]">
 
-        <img
-          src="/jk-logo.png"
-          alt="JK Logo"
-          className="w-36 md:w-44 object-contain animate-pulse"
-        />
+        <div className="flex flex-col items-center">
+
+          <img
+            src="/jk-logo.png"
+            alt="JK Logo"
+            className="w-44 md:w-56 object-contain animate-pulse drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+          />
+
+          <p className="text-white tracking-[8px] text-xs md:text-sm mt-8">
+            JAEGYEONG CONSTRUCTION
+          </p>
+
+        </div>
 
       </div>
     );
@@ -48,38 +58,36 @@ export default function HomePage() {
       className="min-h-screen bg-[#f5f5f3] text-gray-800 scroll-smooth"
     >
 
-      {/* Header */}
+      {/* HEADER */}
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-black/50 backdrop-blur-md py-3"
-            : "bg-gradient-to-b from-black/80 to-transparent py-5"
+            ? "bg-black/55 backdrop-blur-md py-3"
+            : "bg-gradient-to-b from-black/85 to-transparent py-5"
         }`}
       >
 
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
 
-          {/* Logo */}
+          {/* 로고 */}
           <a
             href="#top"
-            className="flex items-center gap-3 cursor-pointer z-50"
+            className="flex items-center gap-4 cursor-pointer z-50"
           >
 
-            {/* JK 로고 */}
             <img
               src="/jk-logo.png"
               alt="JK Logo"
-              className="w-10 h-10 object-contain"
+              className="w-14 h-14 md:w-16 md:h-16 object-contain"
             />
 
-            {/* 텍스트 */}
             <div>
 
-              <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide hover:text-[#c8a46b] transition">
+              <h1 className="text-2xl md:text-3xl font-bold text-white leading-none">
                 재경건설
               </h1>
 
-              <p className="text-[10px] md:text-xs text-gray-300 mt-1 tracking-[2px] md:tracking-[3px]">
+              <p className="text-[11px] md:text-xs text-gray-300 mt-2 tracking-[4px]">
                 JAEGYEONG CONSTRUCTION
               </p>
 
@@ -87,7 +95,7 @@ export default function HomePage() {
 
           </a>
 
-          {/* Desktop Menu */}
+          {/* PC 메뉴 */}
           <nav className="hidden md:flex gap-8 text-sm text-gray-200 font-medium">
 
             <a
@@ -113,7 +121,7 @@ export default function HomePage() {
 
           </nav>
 
-          {/* Hamburger */}
+          {/* 햄버거 */}
           <button
             onClick={() => setMenuOpen(true)}
             className="md:hidden flex flex-col gap-1 z-50"
@@ -129,7 +137,7 @@ export default function HomePage() {
 
       </header>
 
-      {/* Mobile Overlay */}
+      {/* 모바일 배경 */}
       <div
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
           menuOpen
@@ -139,7 +147,7 @@ export default function HomePage() {
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* Mobile Menu */}
+      {/* 모바일 메뉴 */}
       <div
         className={`fixed top-0 right-0 h-full w-[280px] bg-[#111] z-50 transition-transform duration-500 ${
           menuOpen
@@ -168,7 +176,7 @@ export default function HomePage() {
           <a
             href="#about"
             onClick={() => setMenuOpen(false)}
-            className="hover:text-[#c8a46b] transition"
+            className="hover:text-[#c8a46b]"
           >
             회사소개
           </a>
@@ -176,7 +184,7 @@ export default function HomePage() {
           <a
             href="#business"
             onClick={() => setMenuOpen(false)}
-            className="hover:text-[#c8a46b] transition"
+            className="hover:text-[#c8a46b]"
           >
             사업분야
           </a>
@@ -184,7 +192,7 @@ export default function HomePage() {
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="hover:text-[#c8a46b] transition"
+            className="hover:text-[#c8a46b]"
           >
             시공문의
           </a>
@@ -200,7 +208,7 @@ export default function HomePage() {
 
       </div>
 
-      {/* Hero */}
+      {/* HERO */}
       <section className="relative h-screen overflow-hidden">
 
         <div className="absolute inset-0">
@@ -217,8 +225,8 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 h-full flex flex-col justify-center">
 
-          <p className="text-[#c8a46b] tracking-[4px] md:tracking-[6px] text-xs md:text-sm mb-5 md:mb-6 font-semibold">
-            TRUST · SAFETY · RESPONSIBILITY
+          <p className="text-[#c8a46b] tracking-[5px] text-sm mb-6 font-semibold">
+            GAS · WATER · CIVIL · ASPHALT
           </p>
 
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight">
@@ -234,18 +242,18 @@ export default function HomePage() {
             안전하고 신뢰할 수 있는 시공을 제공합니다.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-10 md:mt-14">
+          <div className="flex flex-col sm:flex-row gap-4 mt-12">
 
             <a
               href="#about"
-              className="bg-[#c8a46b] hover:opacity-90 text-center text-black font-bold px-6 md:px-8 py-4 rounded-full transition"
+              className="bg-[#c8a46b] hover:opacity-90 text-black px-8 py-5 rounded-full font-bold text-center transition"
             >
               회사소개 보기
             </a>
 
             <a
               href="#contact"
-              className="border border-white text-center text-white hover:bg-white hover:text-black px-6 md:px-8 py-4 rounded-full transition"
+              className="border border-white text-white hover:bg-white hover:text-black px-8 py-5 rounded-full font-bold text-center transition"
             >
               시공 문의하기
             </a>
@@ -256,10 +264,10 @@ export default function HomePage() {
 
       </section>
 
-      {/* About */}
+      {/* ABOUT */}
       <section
         id="about"
-        className="py-24 md:py-40 bg-white border-t border-gray-100"
+        className="py-24 md:py-40 bg-white"
       >
 
         <div className="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-14 md:gap-24 items-center">
@@ -302,7 +310,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* Business */}
+      {/* BUSINESS */}
       <section
         id="business"
         className="py-24 md:py-40 bg-[#111] text-white"
@@ -374,7 +382,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* Contact */}
+      {/* CONTACT */}
       <section
         id="contact"
         className="py-24 md:py-40 bg-[#f8f8f6]"
@@ -487,7 +495,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* Footer */}
+      {/* FOOTER */}
       <footer className="bg-black text-gray-400 py-14 md:py-20">
 
         <div className="max-w-7xl mx-auto px-5 md:px-8">
