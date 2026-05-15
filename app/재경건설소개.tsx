@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -43,89 +42,8 @@ export default function HomePage() {
       top: 0,
       behavior: "smooth",
     });
-  }; 
- <form
-  id="contact-form"
-  onSubmit={handleSubmit}
-  className="space-y-6 md:space-y-8"
->
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <input
-      type="text"
-      name="name"
-      required
-      placeholder="이름(업체명)"
-      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-    />
+  };
 
-    <input
-      type="tel"
-      name="phone"
-      required
-      placeholder="휴대폰번호"
-      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-    />
-
-    <input
-      type="email"
-      name="email"
-      placeholder="이메일"
-      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-    />
-
-    <input
-      type="text"
-      name="region"
-      placeholder="지역"
-      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-    />
-  </div>
-
-  <div className="flex flex-wrap gap-5 text-gray-700">
-    <label className="flex items-center gap-2">
-      <input type="radio" name="category" value="도시가스공사" />
-      도시가스공사
-    </label>
-
-    <label className="flex items-center gap-2">
-      <input type="radio" name="category" value="상·하수도" />
-      상·하수도
-    </label>
-
-    <label className="flex items-center gap-2">
-      <input type="radio" name="category" value="부대토목" />
-      부대토목
-    </label>
-
-    <label className="flex items-center gap-2">
-      <input type="radio" name="category" value="아스콘포장" />
-      아스콘포장
-    </label>
-  </div>
-
-  <textarea
-    rows={6}
-    name="message"
-    placeholder="문의하실 내용을 입력해주세요"
-    className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b] resize-none"
-  />
-
-  <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-4">
-    <button
-      type="submit"
-      className="w-full bg-[#111] hover:bg-[#c8a46b] hover:text-black text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300"
-    >
-      문의하기
-    </button>
-
-    <a
-      href="tel:01027738020"
-      className="w-full border-2 border-[#111] text-[#111] hover:bg-[#111] hover:text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300 flex items-center justify-center"
-    >
-      전화문의
-    </a>
-  </div>
-</form>
   return (
     <>
       {loading && (
@@ -442,8 +360,8 @@ export default function HomePage() {
 
             <div className="bg-white rounded-[30px] md:rounded-[40px] shadow-2xl p-6 md:p-14">
              <form
-  id="contact-form"
-  onSubmit={handleSubmit}
+  action="https://formsubmit.co/joliecute@naver.com"
+  method="POST"
   className="space-y-6 md:space-y-8"
 >
   <input type="hidden" name="_captcha" value="false" />
@@ -454,7 +372,7 @@ export default function HomePage() {
   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
     <input
       type="text"
-      name="name"
+      name="업체명"
       required
       placeholder="이름(업체명)"
       className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
@@ -462,7 +380,7 @@ export default function HomePage() {
 
     <input
       type="tel"
-      name="phone"
+      name="휴대폰번호"
       required
       placeholder="휴대폰번호"
       className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
@@ -470,14 +388,14 @@ export default function HomePage() {
 
     <input
       type="email"
-      name="email"
+      name="이메일"
       placeholder="이메일"
       className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
     />
 
     <input
       type="text"
-      name="region"
+      name="지역"
       placeholder="지역"
       className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
     />
@@ -485,7 +403,7 @@ export default function HomePage() {
 
   <div className="flex flex-wrap gap-5 text-gray-700">
     <label className="flex items-center gap-2">
-      <input type="radio" name="category" value="도시가스공사" />
+      <input type="radio" name="시공종류" value="도시가스공사" />
       도시가스공사
     </label>
 
@@ -507,7 +425,7 @@ export default function HomePage() {
 
   <textarea
     rows={6}
-    name="massage"
+    name="문의내용"
     placeholder="문의하실 내용을 입력해주세요"
     className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b] resize-none"
   />
