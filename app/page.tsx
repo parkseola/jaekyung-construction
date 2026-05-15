@@ -364,6 +364,8 @@ export default function HomePage() {
                 method="POST"
                 className="space-y-6 md:space-y-8"
               >
+                <input type="hidden" name="_captcha" value="false" />
+<input type="hidden" name="_subject" value="재경건설 시공문의" />
                 <input type="hidden" name="_cc" value="ekstjrgus123@naver.com" />
                 <input type="hidden" name="_subject" value="재경건설 시공문의" />
                 <input type="hidden" name="_captcha" value="false" />
