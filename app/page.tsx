@@ -241,7 +241,7 @@ export default function HomePage() {
   target="_blank"
   className="bg-[#c8a46b] hover:opacity-90 text-black px-8 py-5 rounded-full font-bold text-center transition"
 >
-  회사소개 보기
+  회사소개서 보기
 </a>
 
               <a
