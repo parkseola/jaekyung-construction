@@ -359,95 +359,93 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white rounded-[30px] md:rounded-[40px] shadow-2xl p-6 md:p-14">
-              <form
-                action="https://formsubmit.co/joliecute@naver.com"
-                method="POST"
-                className="space-y-6 md:space-y-8"
-              >
-                <input type="hidden" name="_captcha" value="false" />
-<input type="hidden" name="_subject" value="재경건설 시공문의" />
-                <input type="hidden" name="_cc" value="ekstjrgus123@naver.com" />
-                <input type="hidden" name="_subject" value="재경건설 시공문의" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
+             <form
+  action="https://formsubmit.co/joliecute@naver.com"
+  method="POST"
+  className="space-y-6 md:space-y-8"
+>
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_subject" value="재경건설 시공문의" />
+  <input type="hidden" name="_cc" value="ekstjrgus123@naver.com" />
+  <input type="hidden" name="_template" value="table" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <input
-                    type="text"
-                    name="업체명"
-                    required
-                    placeholder="이름(업체명)"
-                    className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-                  />
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <input
+      type="text"
+      name="업체명"
+      required
+      placeholder="이름(업체명)"
+      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
+    />
 
-                  <input
-                    type="tel"
-                    name="휴대폰번호"
-                    required
-                    placeholder="휴대폰번호"
-                    className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-                  />
+    <input
+      type="tel"
+      name="휴대폰번호"
+      required
+      placeholder="휴대폰번호"
+      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
+    />
 
-                  <input
-                    type="email"
-                    name="이메일"
-                    placeholder="이메일"
-                    className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-                  />
+    <input
+      type="email"
+      name="이메일"
+      placeholder="이메일"
+      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
+    />
 
-                  <input
-                    type="text"
-                    name="지역"
-                    placeholder="지역"
-                    className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
-                  />
-                </div>
+    <input
+      type="text"
+      name="지역"
+      placeholder="지역"
+      className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b]"
+    />
+  </div>
 
-                <div className="flex flex-wrap gap-5 text-gray-700">
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="도시가스공사" />
-                    도시가스공사
-                  </label>
+  <div className="flex flex-wrap gap-5 text-gray-700">
+    <label className="flex items-center gap-2">
+      <input type="radio" name="시공종류" value="도시가스공사" />
+      도시가스공사
+    </label>
 
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="상·하수도" />
-                    상·하수도
-                  </label>
+    <label className="flex items-center gap-2">
+      <input type="radio" name="시공종류" value="상·하수도" />
+      상·하수도
+    </label>
 
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="부대토목" />
-                    부대토목
-                  </label>
+    <label className="flex items-center gap-2">
+      <input type="radio" name="시공종류" value="부대토목" />
+      부대토목
+    </label>
 
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name="시공종류" value="아스콘포장" />
-                    아스콘포장
-                  </label>
-                </div>
+    <label className="flex items-center gap-2">
+      <input type="radio" name="시공종류" value="아스콘포장" />
+      아스콘포장
+    </label>
+  </div>
 
-                <textarea
-                  rows={6}
-                  name="문의내용"
-                  placeholder="문의하실 내용을 입력해주세요"
-                  className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b] resize-none"
-                />
+  <textarea
+    rows={6}
+    name="문의내용"
+    placeholder="문의하실 내용을 입력해주세요"
+    className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-[#c8a46b] resize-none"
+  />
 
-                <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-4">
-                  <button
-                    type="submit"
-                    className="w-full bg-[#111] hover:bg-[#c8a46b] hover:text-black text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300"
-                  >
-                    문의하기
-                  </button>
+  <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-4">
+    <button
+      type="submit"
+      className="w-full bg-[#111] hover:bg-[#c8a46b] hover:text-black text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300"
+    >
+      문의하기
+    </button>
 
-                  <a
-                    href="tel:01027738020"
-                    className="w-full border-2 border-[#111] text-[#111] hover:bg-[#111] hover:text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300 flex items-center justify-center"
-                  >
-                    전화문의
-                  </a>
-                </div>
-              </form>
+    <a
+      href="tel:01027738020"
+      className="w-full border-2 border-[#111] text-[#111] hover:bg-[#111] hover:text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition duration-300 flex items-center justify-center"
+    >
+      전화문의
+    </a>
+  </div>
+</form>
             </div>
           </div>
         </section>
